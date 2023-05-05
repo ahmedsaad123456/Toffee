@@ -1,1 +1,12 @@
+package ShoppingCart;
 
+public class cartItem extends item{
+    public cartItem(int itemID,String itemName, int itemPrice, int itemAvailableAmount, int itemDiscount, int cartItemQuantity){
+        super(itemID, itemName, itemPrice, itemAvailableAmount, itemDiscount);
+        this.cartItemQuantity = cartItemQuantity;
+    }
+    public int cartItemQuantity;
+    public int getCartItemQuantity() {
+        return cartItemQuantity;
+    }
+}
