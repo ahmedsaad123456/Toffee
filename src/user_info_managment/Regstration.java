@@ -6,6 +6,10 @@ import java.util.regex.Pattern;
 
 public class Regstration{
     
+
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
     public boolean checkUsername(String username){
         Pattern p = Pattern.compile("(_?[a-z|A-Z]+){1,3}"); 
         if(!p.matcher(username).matches()){
@@ -21,6 +25,10 @@ public class Regstration{
 
         return true;
     }
+
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
 
     public boolean checkEmail(String email){
         Pattern p = Pattern.compile("([a-z|A-Z|0-9|#|%|\\+|!|$|\\-|_|&|\\*]+(\\.{1}[a-z|A-Z|0-9|#|%|\\+|!|$|\\-|_|&|\\*])*)+@{1}([a-z|A-Z|0-9]+(\\-{1}[a-z|A-Z|0-9]+)*)+(.com){1}"); 
@@ -38,6 +46,10 @@ public class Regstration{
 
         return true;
     }
+
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
 
     public boolean checkPhone(String phone) {
         Pattern p = Pattern.compile("((011)|(010)|(012)|(015)){1}[0-9]{8}"); 
@@ -58,6 +70,10 @@ public class Regstration{
         return true;
     }
 
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
+
 
     public boolean checkPassword(String password){
         Pattern p = Pattern.compile("[0-9|a-z|A-Z|!|@|#|$|&|%]{8,16}"); 
@@ -69,20 +85,31 @@ public class Regstration{
             System.out.println("password must be in range 8-16");
             System.out.println("----------------------------------------------------------------------------------------");
 
-
             return false;
         }
         return true;
     }
-    public  int generateOTP() 
-        {  
-            int randomPin   =(int) (Math.random()*9000);
-            return randomPin; 
-        }
 
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
+    public  int generateOTP() 
+    {  
+        int randomPin   =(int) (Math.random()*9000);
+        return randomPin; 
+    }
+
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
     public boolean CheckOTP(int OTP , int userInput){
         return OTP==userInput;
     }
+
+
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
 
     public boolean CheckAllEmails(ArrayList<User> u , String email){
         System.out.println("email: " + email);
@@ -99,7 +126,9 @@ public class Regstration{
         return true;
     }
 
-
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
     public User checkAllInformation(String name , String email , String phone , String password , String location){
         File_information f = new File_information();
         ArrayList<User> user = f.load();
@@ -119,7 +148,6 @@ public class Regstration{
                 email = in.nextLine();
             }
         }
-
        
         System.out.println("email is valid");
 
@@ -145,30 +173,21 @@ public class Regstration{
             userInput = in.nextInt();
         }
 
+        User u = new User(name , email , password , phone , location , 1);
+
         
         System.out.println("Account is created");
         if(user.size()==0){
-            User u = new User(name , email , password , phone , location , 1);
             f.save(u);
             System.out.println("Your ID is 1");
-            return u;
-
-            
+            return u; 
 
         }
 
-        User u = new User(name , email , password , phone , location , user.get(user.size()-1).getUserID()+1);
+        u.setUserID(user.get(user.size()-1).getUserID()+1);
         f.save(u);
-        System.out.println("Your ID is " + (user.get(user.size()-1).getUserID()+1));
+        System.out.println("Your ID is " + u.getUserID());
         return u;
     
-
-    
-        
-
-        
-
-
-
     }
 }
