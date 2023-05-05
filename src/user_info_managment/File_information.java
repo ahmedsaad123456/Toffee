@@ -10,6 +10,9 @@ import java.util.ArrayList;
 
 public class File_information {
     private File file = new File("DataBase/info.txt");
+
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
     
     public ArrayList<User> load(){
         ArrayList<User> users = new ArrayList<>();
@@ -56,6 +59,11 @@ public class File_information {
         
     }
 
+
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
+
     public void save(User u){
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file , true))) {
             writer.write(u.getUsername());
@@ -70,6 +78,22 @@ public class File_information {
             writer.newLine();
             writer.write(u.getLocation());
             writer.newLine();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
+
+    public void saveAllUsers(ArrayList<User> u){
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file , false))) {
+            for(User user : u){
+                save(user);
+            }
             
         } catch (IOException e) {
             e.printStackTrace();
