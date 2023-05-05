@@ -1,0 +1,55 @@
+itemID:  
+1
+itemName:  
+m&m
+itemPrice:  
+$20
+itemAvailableAmount:  
+100 pieces
+itemDiscount:  
+$0
+--------------------------------------------------------------------------------
+itemID:  
+2
+itemName:  
+haribo
+itemPrice:  
+$15
+itemAvailableAmount:  
+150 pieces
+itemDiscount:  
+$2
+--------------------------------------------------------------------------------
+itemID:  
+3
+itemName:  
+skittles
+itemPrice:  
+$20
+itemAvailableAmount:  
+120 pieces
+itemDiscount:  
+$5
+--------------------------------------------------------------------------------
+itemID:  
+4
+itemName:  
+cadbury
+itemPrice:  
+$30
+itemAvailableAmount:  
+200 pieces
+itemDiscount:  
+$10
+--------------------------------------------------------------------------------
+itemID:  
+5
+itemName:  
+mimix
+itemPrice:  
+$10
+itemAvailableAmount:  
+250 pieces
+itemDiscount:  
+$0
+--------------------------------------------------------------------------------
