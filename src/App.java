@@ -1,6 +1,7 @@
 import user_info_managment.*;
 import payment.*;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import ShoppingCart.*;
@@ -79,6 +80,8 @@ public class App {
 
 
             if(isLoggedIn){
+                ShoppingCart shopcart = new ShoppingCart(user.getUserID());
+
                 int choose=0;
                 while(choose!=5){
                     System.out.println("choose from the following options :");
@@ -92,8 +95,7 @@ public class App {
                     in.nextLine();
 
                     if(choose==1){
-                        ShoppingCart cart = new ShoppingCart(user.getUserID());
-                        cart.viewCatalog();
+                        shopcart.viewCatalog();
                     }
                     else if (choose==2){
                         int exit = 0;
@@ -105,9 +107,8 @@ public class App {
                             System.out.println("Enter quantity:");
                             quantity = in.nextInt();
                             in.nextLine();
-                            ShoppingCart shopCart = new ShoppingCart(user.getUserID());
-                            CartItem cart = shopCart.searchItem(itemID, quantity);
-                            shopCart.addItem(cart);
+                            CartItem cart = shopcart.searchItem(itemID, quantity);
+                            shopcart.addItem(cart);
                             System.out.println("if you want to exit form shopping cart enter 1 , if you want to add new item enter any number expect 1");
                             exit = in.nextInt();
                             in.nextLine();

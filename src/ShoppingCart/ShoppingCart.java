@@ -6,10 +6,17 @@ import java.util.Scanner;
 public class ShoppingCart {
 
     public ShoppingCart(int userID) {
+        
         this.userID = userID;
         numberOfItems = 0;
     }
     
+    public ShoppingCart(int userID , int numberOfItems, ArrayList<CartItem> items) {
+        
+        this.userID = userID;
+        this.numberOfItems = numberOfItems;
+        this.items =items;
+    }
 
     private int userID;
 
