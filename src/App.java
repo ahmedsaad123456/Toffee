@@ -1,7 +1,6 @@
 import user_info_managment.*;
 import payment.*;
 
-import java.io.Console;
 import java.util.Scanner;
 
 import ShoppingCart.*;
@@ -10,9 +9,11 @@ public class App {
     public static void main(String[] args) {
         int options=0;
         Scanner in = new Scanner(System.in);
+        User user = new User();
 
 
         while(options!=3){
+            boolean isLoggedIn = false;
             System.out.println("choose from the following options :");
             System.out.println("1. Register");
             System.out.println("2. login");
@@ -31,8 +32,11 @@ public class App {
                 String password = in.nextLine();
                 System.out.println("enter your location");
                 String location = in.nextLine();
-                User u =r.checkAllInformation(username, email , phone , password , location);
-                u.print();
+                user =r.checkAllInformation(username, email , phone , password , location);
+                System.out.println("welcome to your account");
+                user.print();
+                System.out.println("----------------------------------------------------------------------------------------------------------------------------");
+                isLoggedIn= true;
 
             }
             else if(options==2){
@@ -45,10 +49,12 @@ public class App {
 
                     Login login = new Login(loginEmail , LoginPassword);
 
-                    User u1 = login.searchForAccount();
-                    if(u1.getUserID() !=0){
-                        u1.print();
+                    user = login.searchForAccount();
+                    if(user.getUserID() !=0){
+                        user.print();
                         System.out.println("welcome to your account");
+                        System.out.println("----------------------------------------------------------------------------------------------------------------------------");
+                        isLoggedIn=true;
                         break;
                     }
                     else{
@@ -69,6 +75,55 @@ public class App {
             else if (options!=3){
                 System.out.println("Please enter correct number");
             }
+
+
+
+            if(isLoggedIn){
+                int choose=0;
+                while(choose!=5){
+                    System.out.println("choose from the following options :");
+                    System.out.println("1. View Catalog");
+                    System.out.println("2. Add items to shopping cart");
+                    System.out.println("3. Make order with shopping cart");
+                    System.out.println("4. pay by cash for your order");
+                    System.out.println("5. Log out");
+
+                    choose = in.nextInt();
+                    in.nextLine();
+
+                    if(choose==1){
+                        ShoppingCart cart = new ShoppingCart(user.getUserID());
+                        cart.viewCatalog();
+                    }
+                    else if (choose==2){
+                        int exit = 0;
+                        while(exit!=1){
+                            int itemID=0 , quantity = 0;
+                            System.out.println("Enter item ID:");
+                            itemID = in.nextInt();
+                            in.nextLine();
+                            System.out.println("Enter quantity:");
+                            quantity = in.nextInt();
+                            in.nextLine();
+                            ShoppingCart shopCart = new ShoppingCart(user.getUserID());
+                            CartItem cart = shopCart.searchItem(itemID, quantity);
+                            shopCart.addItem(cart);
+                            System.out.println("if you want to exit form shopping cart enter 1 , if you want to add new item enter any number expect 1");
+                            exit = in.nextInt();
+                            in.nextLine();
+
+                        }
+                        
+
+                    }
+
+                }
+            }
+
+
+
+
+
 
         }
 

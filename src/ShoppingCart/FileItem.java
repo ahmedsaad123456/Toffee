@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class FileItem{
-    private File file = new File("C:\\Users\\Hp\\IdeaProjects\\SW\\src\\DataBase\\items.txt");
+    private File file = new File("DataBase\\items.txt");
 
 //----------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------

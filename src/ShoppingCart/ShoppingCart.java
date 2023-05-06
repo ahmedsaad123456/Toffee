@@ -9,10 +9,7 @@ public class ShoppingCart {
         this.userID = userID;
         numberOfItems = 0;
     }
-    // private int ShoppingCartID;
-    //public int getShoppingCartID() {
-    //return ShoppingCartID;
-    //}
+    
 
     private int userID;
 
@@ -87,14 +84,13 @@ public class ShoppingCart {
     }
 
 
-    public ArrayList<Item> viewCatalog() {
+    public void viewCatalog() {
         FileItem itemFile = new FileItem();
         ArrayList<Item> items = itemFile.load();
         for (int i = 0; i < items.size(); i++) {
             System.out.println("itemID: " + items.get(i).getItemID() + "\nitemName: " + items.get(i).getItemName() + "\nitemPrice: $" + items.get(i).getItemPrice() + "\nitemAvailableAmount: " + items.get(i).getItemAvailableAmount() + " pieces" + "\nitemDiscount: $" + items.get(i).getItemDiscount());
             System.out.println("----------------------------------------------------------------------------------------------------------------------------");
         }
-        return items;
     }
 
 }

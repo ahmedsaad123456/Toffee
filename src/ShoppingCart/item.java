@@ -1,17 +1,14 @@
 package ShoppingCart;
-import java.String;
-import java.io.FileReader;
-import java.io.FileWriter;
 
-public class item {
-    item(int itemID,String itemName, int itemPrice, int itemAvailableAmount, int itemDiscount){
+public class Item {
+    Item(int itemID,String itemName, double itemPrice, int itemAvailableAmount, double itemDiscount){
         this.itemID = itemID;
         this.itemName = itemName;
         this.itemPrice = itemPrice;
         this.itemAvailableAmount = itemAvailableAmount;
         this.itemDiscount = itemDiscount;
     }
-    public int itemID;
+    private int itemID;
     public int getItemID() {
         return itemID;
     }
@@ -20,25 +17,25 @@ public class item {
         this.itemID = itemID;
     }
 
-    public String itemName;
+    private String itemName;
     public String getItemName() {
         return itemName;
     }
 
-    public int itemPrice;
-    public int getItemPrice() {
+    private double itemPrice;
+    public double getItemPrice() {
         return itemPrice;
     }
 
-    public int itemAvailableAmount
+    private int itemAvailableAmount;
     public int getItemAvailableAmount() {
         return itemAvailableAmount;
     }
     public void setItemAvailableAmount(int itemAvailableAmount) {
         this.itemAvailableAmount = itemAvailableAmount;
     }
-    public int itemDiscount;
-    public int getItemDiscount() {
+    private double itemDiscount;
+    public double getItemDiscount() {
         return itemDiscount;
     }
 

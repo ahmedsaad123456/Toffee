@@ -7,7 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class FileOrder {
-    private File file = new File("C:\\Users\\Hp\\IdeaProjects\\SW\\src\\DataBase\\orders.txt");
+    private File file = new File("DataBase\\orders.txt");
     public void save(Order order){
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file , true))) {
             writer.write(String.valueOf(order.getOrderID()));

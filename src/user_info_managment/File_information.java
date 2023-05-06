@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class File_information {
-    private File file = new File("DataBase/info.txt");
+    private File file = new File("DataBase\\info.txt");
 
 //----------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------

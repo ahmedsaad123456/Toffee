@@ -1,6 +1,4 @@
 package ShoppingCart;
-import java.io.FileReader;
-import java.io.FileWriter;
 
 public class Item {
     Item(int itemID,String itemName, double itemPrice, int itemAvailableAmount, double itemDiscount){

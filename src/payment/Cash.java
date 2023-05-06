@@ -2,7 +2,6 @@ package payment;
 
 public class Cash extends payment {
     private String location;
-    private String state = "open";
 
     public Cash(){
         super();
@@ -17,8 +16,9 @@ public class Cash extends payment {
     public String getLocation() {
         return location;
     }
-    public String getState() {
-        return state;
+    
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     // get location from user id

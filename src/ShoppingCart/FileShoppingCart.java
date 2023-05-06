@@ -1,27 +1,24 @@
 package ShoppingCart;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class FileShoppingCart{
-    private File file = new File("C:\\Users\\Hp\\IdeaProjects\\SW\\src\\DataBase\\cart.txt");
+    private File file = new File("DataBase\\cart.txt");
 
 //----------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------
 
 
     public void save(ShoppingCart cart){
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-            writer.write("");
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+        // try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+        //     writer.write("");
+        // }
+        // catch (IOException e) {
+        //     e.printStackTrace();
+        // }
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file , true))) {
             writer.write("User ID: ");
             writer.newLine();
