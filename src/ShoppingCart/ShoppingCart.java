@@ -35,6 +35,13 @@ public class ShoppingCart {
     public ArrayList<CartItem> getItems() {
         return items;
     }
+    public void setItems(ArrayList<CartItem> items) {
+        this.items = items;
+    }
+
+    public void setNumberOfItems(int numberOfItems) {
+        this.numberOfItems = numberOfItems;
+    }
 
     public double getTotalPrice() {
         double totalPrice = 0;
@@ -65,7 +72,22 @@ public class ShoppingCart {
         return null;
     }
 
+    public int getShoppingCart(ArrayList<ShoppingCart> cartList , int userId) {
+        for(int i = 0; i < cartList.size(); i++) {
+            if(cartList.get(i).getUserID()==userId) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public void addItem(CartItem item) {
+        FileShoppingCart cart = new FileShoppingCart();
+        ArrayList<ShoppingCart> cartList = cart.load();
+        int found = getShoppingCart(cartList, userID);
+        if(found!=-1) {
+            items = cartList.get(found).getItems();
+        }
         if (item != null) {
             for(int i = 0; i < items.size(); i++){
                 if(items.get(i).getItemID() == item.getItemID()){
@@ -74,8 +96,9 @@ public class ShoppingCart {
                      char choice = input.next().charAt(0);
                         if(choice == 'y'){
                             items.get(i).setCartItemQuantity(items.get(i).getCartItemQuantity() + item.getCartItemQuantity());
-                            FileShoppingCart shoppingCartFile = new FileShoppingCart();
-                            shoppingCartFile.save(this);
+                            items.get(i).setTotalPrice((items.get(i).getItemPrice()- items.get(i).getItemDiscount()) * items.get(i).getCartItemQuantity());
+                            cartList.get(found).setItems(items);
+                            cart.saveAllShoppingCart(cartList);
                             return;
                         }
                         else{
@@ -84,9 +107,21 @@ public class ShoppingCart {
                 }
             }
             items.add(item);
-            numberOfItems++;
-            FileShoppingCart shoppingCartFile = new FileShoppingCart();
-            shoppingCartFile.save(this);
+            if(found==-1){
+                numberOfItems++;
+                cartList.add(this);
+            }
+            else{
+                cartList.get(found).setItems(items);
+                cartList.get(found).setNumberOfItems(items.size());
+            }
+
+
+
+            cart.saveAllShoppingCart(cartList);
+
+
+            
         }
     }
 

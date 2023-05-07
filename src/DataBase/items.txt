@@ -5,7 +5,7 @@ m&m
 Item Price: 
 20.0
 Item Available Amount: 
-20
+0
 Item Discount: 
 0.0
 Item ID: 
@@ -15,7 +15,7 @@ haribo
 Item Price: 
 15.0
 Item Available Amount: 
-130
+20
 Item Discount: 
 2.0
 Item ID: 
@@ -25,7 +25,7 @@ skittles
 Item Price: 
 20.0
 Item Available Amount: 
-100
+30
 Item Discount: 
 5.0
 Item ID: 
@@ -35,7 +35,7 @@ cadbury
 Item Price: 
 30.0
 Item Available Amount: 
-170
+131
 Item Discount: 
 10.0
 Item ID: 
@@ -45,6 +45,6 @@ mimix
 Item Price: 
 10.0
 Item Available Amount: 
-230
+190
 Item Discount: 
 0.0

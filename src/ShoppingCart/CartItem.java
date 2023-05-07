@@ -16,7 +16,7 @@ public class CartItem extends Item{
         this.cartItemQuantity = quantity;
     }
 
-    public void setTotalPrice(int totalPrice) {
+    public void setTotalPrice(double totalPrice) {
         TotalPrice = totalPrice;
     }
 

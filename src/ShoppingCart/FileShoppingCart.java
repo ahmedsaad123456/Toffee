@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import user_info_managment.User;
 
 public class FileShoppingCart{
     private File file = new File("DataBase\\cart.txt");
@@ -94,12 +93,6 @@ public class FileShoppingCart{
         return cart;
     }
     public void save(ShoppingCart cart){
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-            writer.write("");
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file , true))) {
             writer.write("User ID: ");
             writer.newLine();
@@ -140,6 +133,21 @@ public class FileShoppingCart{
         catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public void saveAllShoppingCart(ArrayList<ShoppingCart> cart){
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file , false))) {
+           
+            for (ShoppingCart c : cart){
+                save(c);
+            }
+
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
