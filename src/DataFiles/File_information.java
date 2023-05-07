@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import user_info_managment.User;
 
 public class File_information {
-    private File file = new File("DataBase\\info.txt");
+    private File file = new File("src/DataBase/File_information");
 
 //----------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------

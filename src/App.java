@@ -10,8 +10,11 @@
  /*
   
     * Some notes for dealing with the program:
+    - make the terminal bigger to see the whole output
+    - the registration and login menu will appear every action until enter 3 to exit 
     - first you must register for new account and the program will display the menu for the shopping
     - if you exit the program after the registration you can run again and just log in
+    - the shopping the main menu will appear every action until enter 6 to log out
     - in the shopping you can see the catalog and its items
     - you can see your shopping cart if it exists
     - to add items to the shopping cart , you must enter the item id and the quantity

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import ShoppingCart.Item;
 
 public class FileItem{
-    private File file = new File("DataBase\\items.txt");
+    private File file = new File("src/DataBase/items.txt");
 
 //----------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------

@@ -35,7 +35,7 @@ cadbury
 Item Price: 
 30.0
 Item Available Amount: 
-131
+121
 Item Discount: 
 10.0
 Item ID: 
