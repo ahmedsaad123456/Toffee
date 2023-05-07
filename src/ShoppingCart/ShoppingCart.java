@@ -3,13 +3,36 @@ package ShoppingCart;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import DataFiles.FileItem;
+import DataFiles.FileShoppingCart;
+
 public class ShoppingCart {
+    private int userID;
+    private int numberOfItems;
+    private ArrayList<CartItem> items = new ArrayList<>();
+
+
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
+    public ShoppingCart(){
+        userID=0;
+        numberOfItems=0;
+    }
+
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
 
     public ShoppingCart(int userID) {
         
         this.userID = userID;
         numberOfItems = 0;
     }
+
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
     
     public ShoppingCart(int userID , int numberOfItems, ArrayList<CartItem> items) {
         
@@ -18,30 +41,51 @@ public class ShoppingCart {
         this.items =items;
     }
 
-    private int userID;
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
+
 
     public int getUserID() {
         return userID;
     }
 
-    private int numberOfItems;
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
+
 
     public int getNumberOfItems() {
         return numberOfItems;
     }
 
-    private ArrayList<CartItem> items = new ArrayList<>();
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
+
 
     public ArrayList<CartItem> getItems() {
         return items;
     }
+
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
     public void setItems(ArrayList<CartItem> items) {
         this.items = items;
     }
 
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
+
     public void setNumberOfItems(int numberOfItems) {
         this.numberOfItems = numberOfItems;
     }
+
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
 
     public double getTotalPrice() {
         double totalPrice = 0;
@@ -50,6 +94,10 @@ public class ShoppingCart {
         }
         return totalPrice;
     }
+
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
     public CartItem searchItem(int itemID, int quantity) {
         FileItem itemFile = new FileItem();
         ArrayList<Item> itemsArray = itemFile.load();
@@ -72,6 +120,10 @@ public class ShoppingCart {
         return null;
     }
 
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
+
     public int getShoppingCart(ArrayList<ShoppingCart> cartList , int userId) {
         for(int i = 0; i < cartList.size(); i++) {
             if(cartList.get(i).getUserID()==userId) {
@@ -81,6 +133,9 @@ public class ShoppingCart {
         return -1;
     }
 
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
     public void addItem(CartItem item) {
         FileShoppingCart cart = new FileShoppingCart();
         ArrayList<ShoppingCart> cartList = cart.load();
@@ -91,9 +146,9 @@ public class ShoppingCart {
         if (item != null) {
             for(int i = 0; i < items.size(); i++){
                 if(items.get(i).getItemID() == item.getItemID()){
-                   System.out.println("This item is already in your cart\n Do you want to increase the quantity of this item? (y/n)");
-                     Scanner input = new Scanner(System.in);
-                     char choice = input.next().charAt(0);
+                    System.out.println("This item is already in your cart\n Do you want to increase the quantity of this item? (y/n)");
+                    Scanner input = new Scanner(System.in);
+                    char choice = input.next().charAt(0);
                         if(choice == 'y'){
                             items.get(i).setCartItemQuantity(items.get(i).getCartItemQuantity() + item.getCartItemQuantity());
                             items.get(i).setTotalPrice((items.get(i).getItemPrice()- items.get(i).getItemDiscount()) * items.get(i).getCartItemQuantity());
@@ -125,6 +180,42 @@ public class ShoppingCart {
         }
     }
 
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
+
+    public void showMyShoppingCart(int id){
+        FileShoppingCart cart = new FileShoppingCart();
+        ArrayList<ShoppingCart> cartList = cart.load();
+        int found = getShoppingCart(cartList, id);
+        if(found==-1){
+            System.out.println("----------------------------------------------------------------------------------------------------------------------------");
+            System.out.println("you don't have the shopping cart");
+            System.out.println("----------------------------------------------------------------------------------------------------------------------------");
+        }
+        else{
+            cartList.get(found).print();
+        }
+
+
+    }
+
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+    
+    public void print(){
+        System.out.println("your ID is " +userID);
+        System.out.println("number of items is " +numberOfItems);
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------");
+        for(CartItem c : items){
+            c.print();
+        }
+
+    }
+
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 
 
     public void viewCatalog() {
         FileItem itemFile = new FileItem();
@@ -136,3 +227,7 @@ public class ShoppingCart {
     }
 
 }
+
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+ 

@@ -15,7 +15,7 @@ haribo
 Item Price: 
 15.0
 Item Available Amount: 
-20
+0
 Item Discount: 
 2.0
 Item ID: 

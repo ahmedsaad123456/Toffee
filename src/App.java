@@ -1,10 +1,40 @@
+/*
+
+
+  - if you have an error , go to DataFiles package and in each class change the file path according to your PC -
+
+
+ 
+*/
+
+ /*
+  
+    * Some notes for dealing with the program:
+    - first you must register for new account and the program will display the menu for the shopping
+    - if you exit the program after the registration you can run again and just log in
+    - in the shopping you can see the catalog and its items
+    - you can see your shopping cart if it exists
+    - to add items to the shopping cart , you must enter the item id and the quantity
+    - if the item is already in the shopping cart , you can increment the quantity only
+    - to make order you must have shopping cart 
+    - to pay for order you must have order
+    
+
+*/
+
+
+
+
+
+
 import user_info_managment.*;
-import payment.*;
-
-import java.util.ArrayList;
 import java.util.Scanner;
+import ShoppingCart.ShoppingCart;
+import ShoppingCart.CartItem;
+import ShoppingCart.Order;
+import payment.Cash;
 
-import ShoppingCart.*;
+
 
 public class App {
     public static void main(String[] args) {
@@ -83,13 +113,14 @@ public class App {
                 ShoppingCart shopcart = new ShoppingCart(user.getUserID());
 
                 int choose=0;
-                while(choose!=5){
+                while(choose!=6){
                     System.out.println("choose from the following options :");
                     System.out.println("1. View Catalog");
                     System.out.println("2. Add items to shopping cart");
-                    System.out.println("3. Make order with shopping cart");
-                    System.out.println("4. pay by cash for your order");
-                    System.out.println("5. Log out");
+                    System.out.println("3. View my shopping cart");
+                    System.out.println("4. Make order with shopping cart");
+                    System.out.println("5. pay by cash for your order");
+                    System.out.println("6. Log out");
 
                     choose = in.nextInt();
                     in.nextLine();
@@ -115,16 +146,22 @@ public class App {
 
                         }
                         
+                    }
+                    else if (choose==3){
+                        shopcart.showMyShoppingCart(user.getUserID());
+                    }
+                    else if (choose==4){
+                        Order order = new Order(user.getUserID());
+                        order.makeOrder();
+                    }
+                    else if (choose==5){
+                        Cash cash = new Cash(user.getLocation() , user.getPhone());
+                        cash.pay(user.getUserID());
 
                     }
 
                 }
             }
-
-
-
-
-
 
         }
 

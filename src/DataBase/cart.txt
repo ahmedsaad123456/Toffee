@@ -1,56 +1,4 @@
 User ID: 
-5
-number of items: 
-4
-Item ID: 
-1
-Item Name: 
-m&m
-Item Quantity: 
-20
-Item Price:
-20.0
-dicount for one item:
-0.0
-Total price:
-400.0
-Item ID: 
-2
-Item Name: 
-haribo
-Item Quantity: 
-60
-Item Price:
-15.0
-dicount for one item:
-2.0
-Total price:
-780.0
-Item ID: 
-3
-Item Name: 
-skittles
-Item Quantity: 
-20
-Item Price:
-20.0
-dicount for one item:
-5.0
-Total price:
-300.0
-Item ID: 
-4
-Item Name: 
-cadbury
-Item Quantity: 
-9
-Item Price:
-30.0
-dicount for one item:
-10.0
-Total price:
-180.0
-User ID: 
 6
 number of items: 
 2
@@ -60,9 +8,9 @@ Item Name:
 haribo
 Item Quantity: 
 30
-Item Price:
+Item Price for one piece:
 15.0
-dicount for one item:
+dicount for one piece:
 2.0
 Total price:
 390.0
@@ -72,9 +20,9 @@ Item Name:
 cadbury
 Item Quantity: 
 30
-Item Price:
+Item Price for one piece:
 30.0
-dicount for one item:
+dicount for one piece:
 10.0
 Total price:
 600.0

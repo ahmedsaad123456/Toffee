@@ -1,4 +1,4 @@
-package user_info_managment;
+package DataFiles;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import user_info_managment.User;
 
 public class File_information {
     private File file = new File("DataBase\\info.txt");
@@ -105,5 +107,7 @@ public class File_information {
 
 
 
-
+//----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------
+  
 
