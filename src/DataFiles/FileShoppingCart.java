@@ -13,7 +13,7 @@ import ShoppingCart.ShoppingCart;
 
 
 public class FileShoppingCart{
-    private File file = new File("src/DataBase/cart.txt");
+    private File file = new File("DataBase\\cart.txt");
 
 //----------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------
@@ -27,7 +27,6 @@ public class FileShoppingCart{
         double itemPrice = 0;
         double itemDiscount = 0;
         int quantity = 0;
-
         if(file.length()==0){
             return cart;
         }

@@ -22,3 +22,11 @@ Status:
 Closed
 Total Price: 
 200.0
+Order ID: 
+4
+User ID: 
+9
+Status: 
+Closed
+Total Price: 
+760.0

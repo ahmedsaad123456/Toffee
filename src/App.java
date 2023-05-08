@@ -11,7 +11,7 @@
   
     * Some notes for dealing with the program:
     - make the terminal bigger to see the whole output
-    - the registration and login menu will appear every action until enter 3 to exit 
+    - the registration and login menu will appear every action until enter 4 to exit 
     - first you must register for new account and the program will display the menu for the shopping
     - if you exit the program after the registration you can run again and just log in
     - the shopping the main menu will appear every action until enter 6 to log out
@@ -31,7 +31,9 @@
 
 
 import user_info_managment.*;
+
 import java.util.Scanner;
+
 import ShoppingCart.ShoppingCart;
 import ShoppingCart.CartItem;
 import ShoppingCart.Order;
@@ -41,17 +43,19 @@ import payment.Cash;
 
 public class App {
     public static void main(String[] args) {
+        
         int options=0;
         Scanner in = new Scanner(System.in);
         User user = new User();
 
 
-        while(options!=3){
+        while(options!=4){
             boolean isLoggedIn = false;
             System.out.println("choose from the following options :");
             System.out.println("1. Register");
             System.out.println("2. login");
-            System.out.println("3. exit");
+            System.out.println("3. View Catalog");
+            System.out.println("4. exit");
             options = in.nextInt();
             in.nextLine();
             if(options==1){
@@ -106,7 +110,11 @@ public class App {
                 
 
             }
-            else if (options!=3){
+            else if (options==3){
+                ShoppingCart cart = new ShoppingCart();
+                cart.viewCatalog();
+            }
+            else if (options!=4){
                 System.out.println("Please enter correct number");
             }
 

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import user_info_managment.User;
 
 public class File_information {
-    private File file = new File("src/DataBase/File_information");
+    private File file = new File("DataBase\\info.txt");
 
 //----------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------
@@ -20,6 +20,7 @@ public class File_information {
         ArrayList<User> users = new ArrayList<>();
         String username=null , password= null , email=null , location=null , phone=null;
         int id=0;
+        
 
         if(file.length()==0){
             return users;

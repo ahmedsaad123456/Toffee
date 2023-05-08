@@ -26,3 +26,19 @@ dicount for one piece:
 10.0
 Total price:
 600.0
+User ID: 
+1
+number of items: 
+1
+Item ID: 
+2
+Item Name: 
+haribo
+Item Quantity: 
+20
+Item Price for one piece:
+15.0
+dicount for one piece:
+2.0
+Total price:
+260.0
