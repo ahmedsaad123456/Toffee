@@ -42,14 +42,18 @@ import payment.Cash;
 
 
 public class App {
-    public static void main(String[] args) {
+    
+    
+    public static void main(String[] args) 
+    {
         
         int options=0;
         Scanner in = new Scanner(System.in);
         User user = new User();
 
 
-        while(options!=4){
+        while(options!=4)
+        {
             boolean isLoggedIn = false;
             System.out.println("choose from the following options :");
             System.out.println("1. Register");
@@ -58,7 +62,8 @@ public class App {
             System.out.println("4. exit");
             options = in.nextInt();
             in.nextLine();
-            if(options==1){
+            if(options==1)
+            {
                 Regstration r = new Regstration();
                 System.out.println("Enter your username");
                 String username = in.nextLine();
@@ -77,8 +82,10 @@ public class App {
                 isLoggedIn= true;
 
             }
-            else if(options==2){
-                while(true){
+            else if(options==2)
+            {
+                while(true)
+                {
                     System.out.println("Enter your email");
                     String loginEmail = in.nextLine();
 
@@ -88,19 +95,22 @@ public class App {
                     Login login = new Login(loginEmail , LoginPassword);
 
                     user = login.searchForAccount();
-                    if(user.getUserID() !=0){
+                    if(user.getUserID() !=0)
+                    {
                         user.print();
                         System.out.println("welcome to your account");
                         System.out.println("----------------------------------------------------------------------------------------------------------------------------");
                         isLoggedIn=true;
                         break;
                     }
-                    else{
+                    else
+                    {
                         int again=0;
                         System.out.println("if you want to try again , please enter 1 , else enter 0 or anything ");
                         again = in.nextInt();
                         in.nextLine();
-                        if(again!=1){
+                        if(again!=1)
+                        {
                             break;
                         }
                         
@@ -110,21 +120,25 @@ public class App {
                 
 
             }
-            else if (options==3){
+            else if (options==3)
+            {
                 ShoppingCart cart = new ShoppingCart();
                 cart.viewCatalog();
             }
-            else if (options!=4){
+            else if (options!=4)
+            {
                 System.out.println("Please enter correct number");
             }
 
 
 
-            if(isLoggedIn){
+            if(isLoggedIn)
+            {
                 ShoppingCart shopcart = new ShoppingCart(user.getUserID());
 
                 int choose=0;
-                while(choose!=6){
+                while(choose!=6)
+                {
                     System.out.println("choose from the following options :");
                     System.out.println("1. View Catalog");
                     System.out.println("2. Add items to shopping cart");
@@ -136,12 +150,15 @@ public class App {
                     choose = in.nextInt();
                     in.nextLine();
 
-                    if(choose==1){
+                    if(choose==1)
+                    {
                         shopcart.viewCatalog();
                     }
-                    else if (choose==2){
+                    else if (choose==2)
+                    {
                         int exit = 0;
-                        while(exit!=1){
+                        while(exit!=1)
+                        {
                             int itemID=0 , quantity = 0;
                             System.out.println("Enter item ID:");
                             itemID = in.nextInt();
@@ -158,14 +175,17 @@ public class App {
                         }
                         
                     }
-                    else if (choose==3){
+                    else if (choose==3)
+                    {
                         shopcart.showMyShoppingCart(user.getUserID());
                     }
-                    else if (choose==4){
+                    else if (choose==4)
+                    {
                         Order order = new Order(user.getUserID());
                         order.makeOrder();
                     }
-                    else if (choose==5){
+                    else if (choose==5)
+                    {
                         Cash cash = new Cash(user.getLocation() , user.getPhone());
                         cash.pay(user.getUserID());
 

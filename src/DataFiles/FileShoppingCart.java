@@ -11,14 +11,22 @@ import java.util.ArrayList;
 import ShoppingCart.CartItem;
 import ShoppingCart.ShoppingCart;
 
-
-public class FileShoppingCart{
+/**
+ * clas to manage the shopping cart information
+ */
+public class FileShoppingCart
+{
     private File file = new File("DataBase\\cart.txt");
 
 //----------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------
-
-    public ArrayList<ShoppingCart> load(){
+    /**
+     * load the shopping cart information from file
+     * 
+     * @return all shopping cart that stored in the database
+     */
+    public ArrayList<ShoppingCart> load()
+    {
         ArrayList<ShoppingCart> cart = new ArrayList<ShoppingCart>();
         int userID=0 , numberOfItems = -1;
         ArrayList<CartItem> items = new ArrayList<CartItem>();
@@ -27,43 +35,55 @@ public class FileShoppingCart{
         double itemPrice = 0;
         double itemDiscount = 0;
         int quantity = 0;
-        if(file.length()==0){
+        if(file.length()==0)
+        {
             return cart;
         }
         int counter =1 , itemInfo = 1 , finish=0;
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) 
+        {
 
             String line;
 
 
-            while ((line = reader.readLine()) != null) {
+            while ((line = reader.readLine()) != null) 
+            {
 
-                if (counter == 2) {
+                if (counter == 2) 
+                {
 
                     userID =  Integer.parseInt(line);
                 }
-                else if (counter == 4){
+                else if (counter == 4)
+                {
                     numberOfItems = Integer.parseInt(line);
                 }
-                if (counter > 4 ) {
-                    if(itemInfo==2){
+                if (counter > 4 ) 
+                {
+                    if(itemInfo==2)
+                    {
 
                         itemID =  Integer.parseInt(line);
                     }
-                    else if(itemInfo==4){
+                    else if(itemInfo==4)
+                    {
                         itemName = line;
                     }
-                    else if(itemInfo==6){
+                    else if(itemInfo==6)
+                    {
                         quantity =  Integer.parseInt(line);
                     }
-                    else if(itemInfo==8){
+                    else if(itemInfo==8)
+                    {
                         itemPrice = Double.parseDouble(line);
                     }
-                    else if (itemInfo==10){
+                    else if (itemInfo==10)
+                    {
                         itemDiscount = Double.parseDouble(line);
 
                     }
-                    else if (itemInfo==12){
+                    else if (itemInfo==12)
+                    {
 
                         itemInfo=0;
                         CartItem item = new CartItem(itemID , itemName , itemPrice , 0 , itemDiscount , quantity);
@@ -73,7 +93,8 @@ public class FileShoppingCart{
                     itemInfo++;
    
                 }
-                if(finish==numberOfItems){
+                if(finish==numberOfItems)
+                {
 
                     ShoppingCart newCart = new ShoppingCart(userID , numberOfItems ,new ArrayList<>( items));
                     cart.add(newCart);
@@ -88,7 +109,8 @@ public class FileShoppingCart{
 
             }
         }
-        catch (IOException e) {
+        catch (IOException e) 
+        {
             e.printStackTrace();
         }
        
@@ -97,9 +119,15 @@ public class FileShoppingCart{
 
 //----------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------
-  
-    public void save(ShoppingCart cart){
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file , true))) {
+    /**
+     * save shopping cart information in the file
+     * 
+     * @param cart is the shopping cart to be stored in the database
+     */
+    public void save(ShoppingCart cart)
+    {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file , true))) 
+        {
             writer.write("User ID: ");
             writer.newLine();
             writer.write(String.valueOf(cart.getUserID()));
@@ -108,7 +136,8 @@ public class FileShoppingCart{
             writer.newLine();
             writer.write(String.valueOf(cart.getNumberOfItems()));
             writer.newLine();
-            for(CartItem item : cart.getItems()){
+            for(CartItem item : cart.getItems())
+            {
                 writer.write("Item ID: ");
                 writer.newLine();
                 writer.write(String.valueOf(item.getItemID()));
@@ -136,7 +165,8 @@ public class FileShoppingCart{
             }
 
         }
-        catch (IOException e) {
+        catch (IOException e) 
+        {
             e.printStackTrace();
         }
 
@@ -145,16 +175,24 @@ public class FileShoppingCart{
 //----------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------
   
-
-    public void saveAllShoppingCart(ArrayList<ShoppingCart> cart){
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file , false))) {
+    /**
+     * save list of shopping cart items in the file
+     * 
+     * @param cart is the list of shopping cart to be stored in the database
+     */
+    public void saveAllShoppingCart(ArrayList<ShoppingCart> cart)
+    {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file , false))) 
+        {
            
-            for (ShoppingCart c : cart){
+            for (ShoppingCart c : cart)
+            {
                 save(c);
             }
 
         }
-        catch (IOException e) {
+        catch (IOException e) 
+        {
             e.printStackTrace();
         }
 
