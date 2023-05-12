@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Toffee">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Toffee.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
