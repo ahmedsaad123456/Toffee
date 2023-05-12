@@ -3,8 +3,10 @@ package user_info_managment;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
-
+import DataFiles.OTP;
 import DataFiles.File_information;
+
+import javax.mail.MessagingException;
 
 /**
  * is simple class to login to the system by the user
@@ -43,8 +45,7 @@ public class Login
      * @return User object 
       
      */
-    public User searchForAccount()
-    {
+    public User searchForAccount() throws MessagingException {
         File_information f = new File_information();
         Scanner in = new Scanner(System.in);
         ArrayList<User> users = new ArrayList<User>();
@@ -85,11 +86,11 @@ public class Login
       *
       * @return the one time password
      */
-    public  int generateOTP() 
-    {  
-        int randomPin   =(int) (Math.random()*9000);
-        return randomPin; 
-    }
+//    public  int generateOTP()
+//    {
+//        int randomPin   =(int) (Math.random()*9000);
+//        return randomPin;
+//    }
 
 //----------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------
@@ -142,12 +143,14 @@ public class Login
       * @param email is the email of the user that he wants to reset password
       * @return User object after successful reset password
      */
-    public User resetpassword(ArrayList<User> users, String email)
-    {
+    public User resetpassword(ArrayList<User> users, String email) throws MessagingException {
         File_information f = new File_information();
         Scanner in = new Scanner(System.in);
-        int OTP = generateOTP();
-        System.out.println("Your OTP is: " + OTP);
+
+        OTP num = new OTP();
+        int OTP = num.generateOTP();
+        num.sendEmail(email);
+
         System.out.println("Enter your OTP");
         int userInput = in.nextInt();
         while(!CheckOTP(OTP, userInput))
