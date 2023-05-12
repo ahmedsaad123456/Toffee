@@ -39,12 +39,14 @@ import ShoppingCart.CartItem;
 import ShoppingCart.Order;
 import payment.Cash;
 
+import javax.mail.MessagingException;
 
 
-public class App {
+public class App 
+{
     
     
-    public static void main(String[] args) 
+    public static void main(String[] args) throws MessagingException 
     {
         
         int options=0;
