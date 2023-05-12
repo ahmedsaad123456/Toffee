@@ -3,8 +3,10 @@ package user_info_managment;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
-
 import DataFiles.File_information;
+import DataFiles.OTP;
+
+import javax.mail.MessagingException;
 
 /**
  * this class to register information for new users
@@ -135,11 +137,11 @@ public class Regstration
      * 
      * @return OTP 
      */
-    public  int generateOTP() 
-    {  
-        int randomPin   =(int) (Math.random()*9000);
-        return randomPin; 
-    }
+//    public  int generateOTP()
+//    {
+//        int randomPin   =(int) (Math.random()*9000);
+//        return randomPin;
+//    }
 
 //----------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------
@@ -197,8 +199,7 @@ public class Regstration
      * @param location is the location of the user
      * @return User object 
      */
-    public User checkAllInformation(String name , String email , String phone , String password , String location)
-    {
+    public User checkAllInformation(String name , String email , String phone , String password , String location) throws MessagingException {
         File_information f = new File_information();
         ArrayList<User> user = f.load();
         Scanner in = new Scanner(System.in);
@@ -239,8 +240,10 @@ public class Regstration
         System.out.println("password is valid");
         System.out.println("location is valid");
 
-        int OTP = generateOTP();
-        System.out.println("Your OTP is: " + OTP);
+        OTP num = new OTP();
+        int OTP = num.generateOTP();
+        num.sendEmail(email);
+
         System.out.println("Enter your OTP");
         int userInput = in.nextInt();
         while(!CheckOTP(OTP, userInput))
@@ -271,4 +274,3 @@ public class Regstration
 
 //----------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------
- 
