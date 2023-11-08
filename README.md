@@ -1,5 +1,6 @@
 # E-commerce System Description(Toffee)
 
+
 The e-commerce system is a Java console-based platform designed to facilitate the buying and selling of various sweets, including candy, chocolate, toffee, and other confectionery items. The system caters to main user: customers.
 
 
@@ -18,9 +19,9 @@ The e-commerce system is a Java console-based platform designed to facilitate th
 
 ### Folders Structure
 
-	docs: containes the java documentation.
-	src:  containes the App.java that the main of the project
-	      containes pakages as:
+	docs		   : containes the java documentation.
+	src		   :  containes the App.java that the main of the project
+			      containes pakages as:
 	DataFiles          : containes the all classes that manages the files 
 			       that containes the all information needed in the project
 	payment            : containes classes that manages the payment process 
@@ -47,8 +48,15 @@ The e-commerce system is a Java console-based platform designed to facilitate th
 if you have an error , go to DataFiles package 
 and in each class change the file path according to your PC 
 
+## Contributors
 
+We would like to thank the following contributors to this project:
 
+- [Ahmed Saad](https://github.com/ahmedsaad123456)
+- [Shahd Osama](https://github.com/shahdosama10)
+- [Salma Abdelaziz](https://github.com/Salmaabdelaziz271)
+
+Special thanks to everyone who has helped make this project better.
 
 
 
